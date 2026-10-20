@@ -1,68 +1,58 @@
 # Real-Time Sentiment Analysis using MLOps and Cloud
 
-A real-time sentiment analysis application built with Python, FastAPI, and TextBlob, with a deployed web interface and REST API.
-
 ## 🚀 Live Demo
 
 - **Live Application:** https://sentiment-mlops-cw6k.onrender.com
-- **Interactive API Documentation:** https://sentiment-mlops-cw6k.onrender.com/docs
+- **API Documentation:** https://sentiment-mlops-cw6k.onrender.com/docs
 
-> **Note:** This project uses Render's free hosting plan. The service may take around 50 seconds or more to respond after a period of inactivity.
+> Note: Hosted on Render's free plan. The first request after inactivity may take around 50 seconds or more.
 
 ## 📌 Overview
 
-This project analyzes text and classifies its sentiment as **Positive, Negative, or Neutral** using TextBlob's sentiment polarity score. FastAPI exposes the prediction functionality through a REST API.
-
-The application is deployed on Render and provides interactive API documentation through Swagger UI.
+A real-time sentiment analysis application built with Python, FastAPI, and TextBlob. It classifies text as Positive, Negative, or Neutral and returns a sentiment polarity score through a REST API.
 
 ## 🧰 Tech Stack
 
-- **Language:** Python
-- **API Framework:** FastAPI
-- **Sentiment Analysis:** TextBlob
-- **Web Server:** Uvicorn
-- **Deployment:** Render
-- **Version Control:** Git and GitHub
+- Python
+- FastAPI
+- TextBlob
+- Uvicorn
+- Render
+- Git and GitHub
+- Docker
 
 ## ✨ Features
 
-- Real-time text sentiment prediction
-- Positive, negative, and neutral classifications
-- Polarity score returned with each prediction
-- REST API endpoint using JSON
-- Interactive Swagger API documentation
-- Publicly accessible deployed application
+- Real-time sentiment prediction
+- Positive, Negative, and Neutral classifications
+- Polarity score in the API response
+- REST API with JSON input and output
+- Interactive Swagger documentation
+- Live deployment
 
 ## ⚙️ Run Locally
 
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/DeepakGIT-CYBER/sentiment-mlops.git
-cd sentiment-mlops
-```
-
-### 2. Install dependencies
+Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Start the application
+Start the server:
 
 ```bash
 uvicorn app:app --reload
 ```
 
-Open http://127.0.0.1:8000 to access the application.
-
-Open http://127.0.0.1:8000/docs to explore and test the API.
+Open:
+- Application: http://127.0.0.1:8000
+- API documentation: http://127.0.0.1:8000/docs
 
 ## 🔌 API Usage
 
 **Endpoint:** `POST /predict`
 
-**Request body:**
+Example request:
 
 ```json
 {
@@ -70,7 +60,7 @@ Open http://127.0.0.1:8000/docs to explore and test the API.
 }
 ```
 
-**Example response:**
+Example response:
 
 ```json
 {
@@ -79,25 +69,15 @@ Open http://127.0.0.1:8000/docs to explore and test the API.
 }
 ```
 
-The polarity value depends on the input text.
-
-## 🧪 Test with cURL
-
-```bash
-curl -X POST "https://sentiment-mlops-cw6k.onrender.com/predict" \
-  -H "Content-Type: application/json" \
-  -d "{\"text\":\"I love cloud computing!\"}"
-```
+The polarity score depends on the input text.
 
 ## 🐳 Docker
 
-A Dockerfile is included in the repository to containerize the application.
+A Dockerfile is included to containerize the application.
 
-## 🔄 MLOps and Automation
+## 🔄 MLOps Integration
 
-The repository includes a GitHub Actions workflow configured for Google Cloud Run deployment. The current live application is hosted on Render.
-
-**Note:** Automated Google Cloud Run deployment has not been verified as working.
+A GitHub Actions workflow is included and configured for Google Cloud Run deployment. The current live application is hosted on Render. The Google Cloud Run automation has not yet been verified.
 
 ## 📁 Project Structure
 
@@ -105,3 +85,16 @@ The repository includes a GitHub Actions workflow configured for Google Cloud Ru
 sentiment-mlops/
 ├── .github/
 │   └── workflows/
+│       └── deploy.yml
+├── app.py
+├── index.html
+├── requirements.txt
+├── Dockerfile
+└── README.md
+```
+
+## 👨‍💻 Author
+
+**Deepak Reddy**
+
+GitHub: https://github.com/DeepakGIT-CYBER
