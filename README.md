@@ -1,41 +1,107 @@
 # Real-Time Sentiment Analysis using MLOps and Cloud
 
-## 🚀 Overview
-This project demonstrates how to deploy a simple machine learning model for real-time sentiment analysis using **FastAPI**, **TextBlob**, and **Google Cloud Run**.  
-It also integrates a lightweight **MLOps pipeline** using **GitHub Actions** for automated deployment.
+A real-time sentiment analysis application built with Python, FastAPI, and TextBlob, with a deployed web interface and REST API.
+
+## 🚀 Live Demo
+
+- **Live Application:** https://sentiment-mlops-cw6k.onrender.com
+- **Interactive API Documentation:** https://sentiment-mlops-cw6k.onrender.com/docs
+
+> **Note:** This project uses Render's free hosting plan. The service may take around 50 seconds or more to respond after a period of inactivity.
+
+## 📌 Overview
+
+This project analyzes text and classifies its sentiment as **Positive, Negative, or Neutral** using TextBlob's sentiment polarity score. FastAPI exposes the prediction functionality through a REST API.
+
+The application is deployed on Render and provides interactive API documentation through Swagger UI.
 
 ## 🧰 Tech Stack
-- **Python 3.9**
-- **FastAPI**
-- **TextBlob**
-- **Google Cloud Run**
-- **GitHub Actions (MLOps)**
+
+- **Language:** Python
+- **API Framework:** FastAPI
+- **Sentiment Analysis:** TextBlob
+- **Web Server:** Uvicorn
+- **Deployment:** Render
+- **Version Control:** Git and GitHub
+
+## ✨ Features
+
+- Real-time text sentiment prediction
+- Positive, negative, and neutral classifications
+- Polarity score returned with each prediction
+- REST API endpoint using JSON
+- Interactive Swagger API documentation
+- Publicly accessible deployed application
 
 ## ⚙️ Run Locally
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/DeepakGIT-CYBER/sentiment-mlops.git
+cd sentiment-mlops
+```
+
+### 2. Install dependencies
+
 ```bash
 pip install -r requirements.txt
+```
+
+### 3. Start the application
+
+```bash
 uvicorn app:app --reload
 ```
-Then open: http://127.0.0.1:8000/docs
 
-## ☁️ Deploy to Google Cloud Run
-```bash
-gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/sentiment-api
-gcloud run deploy sentiment-api --image gcr.io/YOUR_PROJECT_ID/sentiment-api --platform managed
-```
+Open http://127.0.0.1:8000 to access the application.
 
-## 🧪 Test
-```bash
-curl -X POST "https://YOUR_URL/predict" -H "Content-Type: application/json" -d '{"text": "I love cloud computing!"}'
-```
+Open http://127.0.0.1:8000/docs to explore and test the API.
 
-## 📊 Example Output
+## 🔌 API Usage
+
+**Endpoint:** `POST /predict`
+
+**Request body:**
+
 ```json
 {
-  "sentiment": "Positive",
-  "polarity": 0.5
+  "text": "I love this product. It is amazing!"
 }
 ```
 
-## 🧠 MLOps Integration
-Every push to `main` branch automatically triggers deployment using GitHub Actions.
+**Example response:**
+
+```json
+{
+  "sentiment": "Positive",
+  "polarity": 0.625
+}
+```
+
+The polarity value depends on the input text.
+
+## 🧪 Test with cURL
+
+```bash
+curl -X POST "https://sentiment-mlops-cw6k.onrender.com/predict" \
+  -H "Content-Type: application/json" \
+  -d "{\"text\":\"I love cloud computing!\"}"
+```
+
+## 🐳 Docker
+
+A Dockerfile is included in the repository to containerize the application.
+
+## 🔄 MLOps and Automation
+
+The repository includes a GitHub Actions workflow configured for Google Cloud Run deployment. The current live application is hosted on Render.
+
+**Note:** Automated Google Cloud Run deployment has not been verified as working.
+
+## 📁 Project Structure
+
+```text
+sentiment-mlops/
+├── .github/
+│   └── workflows/
